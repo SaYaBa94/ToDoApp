@@ -1,0 +1,16 @@
+<form class="form-signin" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+  </div>
+
+  <div class="form-label-group">
+    <input type="email" id="email" name="email" class="form-control" [(ngModel)]="model.email" placeholder="Email address" required autofocus>
+    <label for="email">Email address</label>
+  </div>
+
+  <div class="form-label-group">
+    <input type="password" id="password" name="password" class="form-control" [(ngModel)]="model.pass" placeholder="Password" required>
+    <label for="password">Password</label>
+  </div>
+  <a class="nav-link btn btn-primary btn-block " (click)="login()" [routerLink]="['/home']">Login</a>
+</form>

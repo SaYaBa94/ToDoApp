@@ -1,0 +1,19 @@
+<form #userRegisterForm="ngForm" (ngSubmit)="register(userRegisterForm)" class="py-5">
+  <div class="form-group">
+    <input type="email" placeholder="User Email" #email="ngModel" [(ngModel)]="model.email" class="form-control" name="email" id="email" required>
+    <div *ngIf="email.invalid&&email.dirty" class="alert alert-danger">Email is required</div>
+  </div>
+  <div class="form-group">
+    <input type="password" placeholder="Password" #password="ngModel" [(ngModel)]="model.pass" class="form-control" name="password" id="password" required>
+    <div *ngIf="password.invalid&&password.dirty" class="alert alert-danger">Password is Required </div>
+  </div>
+  <div class="form-group">
+    <input type="text" placeholder="Name" #name="ngModel" [(ngModel)]="model.name" class="form-control" name="name" id="name" required>
+    <div *ngIf="name.invalid&&name.dirty" class="alert alert-danger">Name is required </div>
+  </div>
+  <div class="form-group">
+    <input type="text" placeholder="Surname" #surname="ngModel" [(ngModel)]="model.surname" class="form-control" name="surname" id="surname" required>
+    <div *ngIf="surname.invalid&&surname.dirty" class="alert alert-danger">Surname is required </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]=userRegisterForm.invalid>Submit</button>
+</form>

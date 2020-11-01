@@ -1,0 +1,22 @@
+<div class="form-check">
+  <ul class="list-group mb-3">
+    <li name="listitem" id="listitem" *ngFor="let todo of todos; let todono= index" class="list-group-item d-flex justify-content-between lh-condensed">
+
+      <span class="form-check-label" id="todo{{todono}}">{{todo.content}}</span>
+      <small class="text-muted">{{todo.todoDate}}</small>
+      <a class="nav-link btn btn-danger" id="todo{{todono}}" name="deleteTodo{{todono}}" (click)="deleteTodo(categoryNo , todono)">Delete</a>
+    </li>
+  </ul>
+</div>
+
+<form #addTodoForm="ngForm" (ngSubmit)="addTodo(addTodoForm)" class="py-5">
+  <div class="form-group">
+    <input type="text" placeholder="ToDo" #content="ngModel" [(ngModel)]="model.content" class="form-control" name="content2" id="content2" required>
+    <div *ngIf="content.invalid&&content.dirty" class="alert alert-danger">Content name is required</div>
+  </div>
+  <div class="form-group">
+    <input type="datetime-local" placeholder="ToDo Time" #todoDate="ngModel" [(ngModel)]="model.todoDate" class="form-control" name="todoDate" id="todoDate" required>
+    <div *ngIf="todoDate.invalid&&todoDate.touched" class="alert alert-danger">Date is required</div>
+  </div>
+  <button type="submit" class="btn btn-info">Submit</button>
+</form>

@@ -1,0 +1,24 @@
+<ul class="list-group mb-3">
+  <li name="listitem" id="listitem" *ngFor="let category of categories; let categoryno = index" class="list-group-item d-flex justify-content-between lh-condensed">
+    <a class="nav-link btn  btn-block " (click)="getTodos(categoryno)">
+      <h6 class="my-0">{{category.name}}</h6>
+      <small class="text-muted">{{category.descripton}}</small>
+    </a>
+
+    <a class="btn btn-danger" (click)="deleteCategory(categoryno)">Delete</a>
+  </li>
+</ul>
+
+<form #addCategoryForm="ngForm" (ngSubmit)="addCategory(addCategoryForm)" class="py-5">
+  <div class="form-group">
+    <input type="text" placeholder="Category Name" #name="ngModel" [(ngModel)]="model.name" class="form-control" name="name" id="name" required>
+    <div *ngIf="name.invalid&&name.dirty" class="alert alert-danger">Category name is required</div>
+  </div>
+  <div class="form-group">
+    <input type="text" placeholder="Description" #description="ngModel" [(ngModel)]="model.description" class="form-control" name="description" id="description" required>
+    <div *ngIf="description.invalid&&description.dirty" class="alert alert-danger">Description is Required </div>
+  </div>
+  <button type="submit" class="btn btn-info" [disabled]=addCategoryForm.invalid>Submit</button>
+</form>
+
+
